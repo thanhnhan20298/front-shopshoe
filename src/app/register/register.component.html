@@ -1,0 +1,59 @@
+<div class="container mt-5">
+  <form #registerForm="ngForm">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="login-form mx-auto">
+          <h2 class="login-header">Đăng nhập</h2>
+          <div class="form-group">
+            <label for="email">Email/Phone</label>
+            <input type="text" class="form-control" placeholder="Vui lòng nhập email...!" [(ngModel)]="email" required
+              (input)="onEmailChange()" (focus)="registerForm.form.markAsTouched()" [ngModelOptions]="{standalone: true}" id="email" />
+            <p class="text-danger" *ngIf="email.length < 6 && registerForm.form.touched">Phải có ít nhất 10 ký tự</p>
+            <div class="divider-nospace"></div>
+          </div>
+          <div class="form-group password-field">
+            <label for="password">Mật khâu</label>
+            <input type="password" placeholder="Nhập ít nhất 3 ký tự...!" class="form-control" required
+              [(ngModel)]="password" id="password" />
+            <i class="password-toggle fas fa-eye-slash"></i>
+            <div class="divider-nospace"></div>
+          </div>
+          <div class="form-group password-field">
+            <label for="confirm-password">Nhập lại mật khâu</label>
+            <input type="password" placeholder="Nhập ít nhất 3 ký tự...!" class="form-control" required
+              [(ngModel)]="confirmPassword" id="confirm-password" />
+            <i class="password-toggle fas fa-eye-slash"></i>
+            <div class="divider-nospace"></div>
+          </div>
+          <div class="form-group">
+            <label for="full-name">Họ và tên</label>
+            <input type="text" class="form-control" required [(ngModel)]="fullName" id="full-name" />
+            <div class="divider-nospace"></div>
+          </div>
+          <div class="form-group">
+            <label for="date-of-birth">Ngày sinh</label>
+            <input type="date" class="form-control" [(ngModel)]="dateOfBirth" id="date-of-birth" />
+            <div class="divider-nospace"></div>
+          </div>
+          <div class="form-group">
+            <label for="address">Địa chỉ</label>
+            <input type="text" class="form-control" [(ngModel)]="address" id="address" />
+            <div class="divider-nospace"></div>
+          </div>
+          <div class="form-group">
+            <div class="form-check checkbox-text">
+              <span style="display: flex">
+                <input type="checkbox" class="form-check-input" [(ngModel)]="isConditon" id="condition" />
+                <label class="form-check-text text-start" for="condition">Tôi đồng ý với các điều khoản và điều
+                  kiện</label>
+              </span>
+            </div>
+          </div>
+          <button class="login-register" (click)="registerHandle()">Đăng Ký</button>
+          <div class="divider-nospace"></div>
+          <p class="text-center">Bạn đã có tài khoản? <span><a href="#" class="login-link">Đăng nhập</a></span></p>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

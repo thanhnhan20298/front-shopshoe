@@ -1,0 +1,121 @@
+
+.navbar-brand {
+  color: #FEA116;
+  font-size: 35 px;
+  padding: 10px;
+  position: relative;
+  margin-right: 50px;
+}
+
+.navbar-brand::before {
+  content: "";
+  position: absolute;
+  height: 40%;
+  width: 20%;
+  display: block;
+  border-left: 5px solid #FEA116;
+  border-top: 5px solid #FEA116;
+  left: 0;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+.navbar-brand::after {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 40%;
+  width: 20%;
+  border-right: 5px solid #FEA116;
+  border-bottom: 5px solid #FEA116;
+  right: 0;
+  bottom: 0;
+  transform: translateX(50%);
+}
+/*** Navbar ***/
+.navbar-menu{
+  background-color: #0F172B;
+}
+.navbar-dropdown {
+  background-color: #0F172B;
+
+}
+.dropdown-item {
+  color: #F1F8FF;
+}
+.nav-item{
+  color: #F1F8FF;
+}
+.icon-cart {
+  color: #F1F8FF;
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.nav-link {
+  color: white;
+  position: relative;
+  margin-left: 25px;
+  padding: 35px 0;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 500;
+  outline: none;
+  transition: .5s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #FEA116;
+}
+
+@media (max-width: 991.98px) {
+
+  .navbar-dark .navbar-collapse {
+      margin-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, .1)
+  }
+
+  .navbar-dark .navbar-nav .nav-link {
+      padding: 10px 0;
+      margin-left: 0;
+  }
+
+
+}
+
+@media (min-width: 992px) {
+  .navbar-dark {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      background: transparent !important;
+  }
+
+}
+
+.navbar-toggler {
+  color: #FEA116;
+  font-size: 30px;
+  border: 1px solid #FEA116;
+}
+/*** Hero Header ***/
+// .hero-header {
+//   background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .9)), url(../../../public/img/logo-branch.jpg);
+//   // background-position: center center;
+//   // background-repeat: no-repeat;
+//   // background-size: cover;
+  
+// }
+
+// .hero-header img {
+//   animation: imgRotate 50s linear infinite;
+// }
+
+// @keyframes imgRotate { 
+//   100% { 
+//       transform: rotate(360deg); 
+//   } 
+// }
