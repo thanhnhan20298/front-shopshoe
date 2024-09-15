@@ -6,48 +6,57 @@
           <h2 class="login-header">Đăng nhập</h2>
           <div class="form-group">
             <label for="email">Email/Phone</label>
-            <input type="text" class="form-control" placeholder="Vui lòng nhập email...!" [(ngModel)]="email" required
-              (input)="onEmailChange()" (focus)="registerForm.form.markAsTouched()" [ngModelOptions]="{standalone: true}" id="email" />
-            <p class="text-danger" *ngIf="email.length < 6 && registerForm.form.touched">Phải có ít nhất 10 ký tự</p>
+            <input name="email" type="text" class="form-control" placeholder="Vui lòng nhập email...!" [(ngModel)]="email"
+            (input)="onEmailChange()" required id="email"/>
             <div class="divider-nospace"></div>
+            <p class="text-danger" *ngIf="email.length < 12 && registerForm.form.touched">Phải có ít nhất 12 ký tự</p>
           </div>
           <div class="form-group password-field">
             <label for="password">Mật khâu</label>
-            <input type="password" placeholder="Nhập ít nhất 3 ký tự...!" class="form-control" required
+            <input name="password" type="password" placeholder="Nhập ít nhất 3 ký tự...!" class="form-control" required
               [(ngModel)]="password" id="password" />
             <i class="password-toggle fas fa-eye-slash"></i>
             <div class="divider-nospace"></div>
+            <p class="text-danger" *ngIf="password.length < 3 && registerForm.form.touched">Phải có ít nhất 12 ký tự</p>
           </div>
           <div class="form-group password-field">
             <label for="confirm-password">Nhập lại mật khâu</label>
-            <input type="password" placeholder="Nhập ít nhất 3 ký tự...!" class="form-control" required
-              [(ngModel)]="confirmPassword" id="confirm-password" />
+            <input name="retypePassword" type="password" placeholder="Nhập ít nhất 3 ký tự...!" class="form-control"
+
+            (input)="registerForm.form.markAsTouched(); checkPasswordMatch()"
+              [(ngModel)]="retypePassword" required id="retype-password" />
             <i class="password-toggle fas fa-eye-slash"></i>
             <div class="divider-nospace"></div>
+            <p class="text-danger" *ngIf="retypePassword.length < 3 && registerForm.form.touched">Phải có ít nhất 12 ký tự</p>
+            <p class="text-danger" *ngIf="registerForm.form.controls['retypePassword'].errors?.['passwordNotMatch'] && registerForm.form.touched" >{{registerForm.form.controls['retypePassword'].errors?.['passwordNotMatch']}}</p>
+            <!-- <p class="text-danger" *ngIf="registerForm.form.get('confirmPassword')?.hasError" >Password không khớp</p> -->
           </div>
           <div class="form-group">
             <label for="full-name">Họ và tên</label>
-            <input type="text" class="form-control" required [(ngModel)]="fullName" id="full-name" />
+            <input name="full-name" type="text" class="form-control" required [(ngModel)]="fullName" required id="full-name" />
             <div class="divider-nospace"></div>
+            <p class="text-danger" *ngIf="fullName.length < 12 && registerForm.form.touched">Phải có ít nhất 12 ký tự</p>
           </div>
           <div class="form-group">
             <label for="date-of-birth">Ngày sinh</label>
-            <input type="date" class="form-control" [(ngModel)]="dateOfBirth" id="date-of-birth" />
+            <input name="date-of-birth"  type="date" class="form-control" [(ngModel)]="dateOfBirth" id="date-of-birth" />   
             <div class="divider-nospace"></div>
           </div>
           <div class="form-group">
             <label for="address">Địa chỉ</label>
-            <input type="text" class="form-control" [(ngModel)]="address" id="address" />
+            <input name="address" type="text" class="form-control" [(ngModel)]="address" required id="address" />
             <div class="divider-nospace"></div>
+            <p class="text-danger" *ngIf="address.length < 12 && registerForm.form.touched">Phải có ít nhất 12 ký tự</p>
           </div>
           <div class="form-group">
             <div class="form-check checkbox-text">
               <span style="display: flex">
-                <input type="checkbox" class="form-check-input" [(ngModel)]="isConditon" id="condition" />
+                <input name="condition" type="checkbox" class="form-check-input" [(ngModel)]="isConditon" required id="condition" />
                 <label class="form-check-text text-start" for="condition">Tôi đồng ý với các điều khoản và điều
                   kiện</label>
               </span>
             </div>
+            <p class="text-danger" *ngIf="!isConditon && registerForm.form.touched">Bạn cần phải đồng ý điều khoản và điều kiện !!!!</p>
           </div>
           <button class="login-register" (click)="registerHandle()">Đăng Ký</button>
           <div class="divider-nospace"></div>

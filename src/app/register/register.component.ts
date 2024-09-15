@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -10,9 +10,11 @@ export class RegisterComponent implements OnInit {
 
   @ViewChild('registerForm') registerForm!: NgForm;
 
+
+
   email:string;
   password:string;
-  confirmPassword:string;
+  retypePassword:string;
   fullName:string;
   address:string;
   isConditon:boolean;
@@ -21,7 +23,7 @@ export class RegisterComponent implements OnInit {
   constructor() {
     this.email=""
     this.password=""
-    this.confirmPassword=""
+    this.retypePassword=""
     this.fullName=""
     this.dateOfBirth= new Date();
     this.dateOfBirth.setFullYear(this.dateOfBirth.getFullYear()-18)
@@ -31,6 +33,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
   onEmailChange() {
@@ -39,8 +42,20 @@ export class RegisterComponent implements OnInit {
   }
 
   registerHandle() {
-    const message = `phone: ${this.email}` + `phone: ${this.password}`+ `phone: ${this.confirmPassword}`+ `phone: ${this.fullName}`+ `phone: ${this.address}`+ `phone: ${this.isConditon}`
+    const message = `phone: ${this.email}` + `phone: ${this.password}`+ `phone: ${this.retypePassword}`+ `phone: ${this.fullName}`+ `phone: ${this.address}`+ `phone: ${this.isConditon}`
     alert(message)
   }
 
+  //how to check password match ?
+  checkPasswordMatch() {
+    console.log(this.registerForm.form);
+    
+    if(this.password !== this.retypePassword) {
+      console.log('123');
+      
+      this.registerForm.form.controls["retypePassword"].setErrors({'passwordNotMatch':"Password not matching"})
+    } else {
+      this.registerForm.form.controls["retypePassword"].setErrors(null);
+    }
+  }
 }
